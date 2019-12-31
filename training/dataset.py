@@ -1,5 +1,8 @@
 import os
 from mrcnn.utils import Dataset
+from xml.etree import ElementTree
+from numpy import zeros
+from numpy import asarray
 
 class BacheDataset(Dataset):
     # class items just in case you want to change it
@@ -54,7 +57,7 @@ class BacheDataset(Dataset):
 
     # loader
     def load_mask(self, image_id):
-        info = self.images_info[image_id]
+        info = self.image_info[image_id]
         path = info['annotation']
         boxes, w, h = self.extract_boxes(path)
         masks = zeros([h, w, len(boxes)], dtype='uint8')
