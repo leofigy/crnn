@@ -5,8 +5,7 @@ import sys
 import os
 
 from datetime import datetime
-from dataset import BacheDataset
-from mrcnn.config import Config
+from dataset import BacheDataset, BacheConfig
 from mrcnn.model import MaskRCNN
 
 def main():
@@ -27,10 +26,7 @@ def main():
     print("Test val set %d" % len(test_set.image_ids))
 
     # Configuration
-    train_config = Config()
-    train_config.NAME = "bache_cfg"
-    train_config.NUM_CLASSES = 2
-    train_config.STEPS_PER_EPOCH = 131
+    train_config = BacheConfig()
 
     train_config.display()
 

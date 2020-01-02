@@ -3,6 +3,21 @@ from mrcnn.utils import Dataset
 from xml.etree import ElementTree
 from numpy import zeros
 from numpy import asarray
+from mrcnn.config import Config
+
+
+# Issue with the config see 
+
+# let's see 
+class BacheConfig(Config):
+    # define the name of the configuration
+    NAME = "baches_cfg"
+    # number of classes (background + kangaroo)
+    NUM_CLASSES = 1 + 1
+    # number of training steps per epoch
+    STEPS_PER_EPOCH = 131
+    IMAGES_PER_GPU = 1
+    
 
 class BacheDataset(Dataset):
     # class items just in case you want to change it
@@ -32,6 +47,7 @@ class BacheDataset(Dataset):
             name, ext = os.path.splitext(filename)
             image_path = os.path.join(images_dir, filename)
             ann_path = os.path.join(annots_dir, name + ".xml")
+            print(is_train,name, image_path, ann_path)
             self.add_image(BacheDataset.root_name, image_id=name, path=image_path, annotation=ann_path)
 
         for image in target_set:
