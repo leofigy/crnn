@@ -17,7 +17,16 @@ class BacheConfig(Config):
     # number of training steps per epoch
     STEPS_PER_EPOCH = 131
     IMAGES_PER_GPU = 1
-    
+
+# define the prediction configuration
+class PredictionConfig(Config):
+	# define the name of the configuration
+	NAME = "bachespred_cfg"
+	# number of classes (background + kangaroo)
+	NUM_CLASSES = 1 + 1
+	# simplify GPU config
+	GPU_COUNT = 1
+	IMAGES_PER_GPU = 1
 
 class BacheDataset(Dataset):
     # class items just in case you want to change it
