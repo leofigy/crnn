@@ -23,8 +23,6 @@ def main():
     test_set.prepare()
 
     print(test_set.class_names)
-    return
-
     print("Train set %d" % len(train_set.image_ids))
     print("Test val set %d" % len(test_set.image_ids))
 
